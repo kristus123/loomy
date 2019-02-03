@@ -1,3 +1,4 @@
+import os
 """Default configuration
 
 Use env var to override
