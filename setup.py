@@ -16,7 +16,9 @@ setup(
         'flask-marshmallow',
         'marshmallow-sqlalchemy',
         'python-dotenv',
-        'passlib'
+        'passlib',
+        'requests',
+        'requests-mock'
     ],
     entry_points={
         'console_scripts': [

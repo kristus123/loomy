@@ -1,8 +1,7 @@
 from flask import Flask
 
 from myapi import auth, api
-from myapi.extensions import db, jwt, migrate, celery
-
+from myapi.extensions import db, jwt, migrate, celery, mail
 
 from myapi.api.resources.movie import movie_blueprint
 
@@ -39,6 +38,7 @@ def configure_extensions(app, cli):
     """
     db.init_app(app)
     jwt.init_app(app)
+    mail.init_app(app)
 
     if cli is True:
         migrate.init_app(app, db)
