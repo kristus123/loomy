@@ -12,21 +12,22 @@ def test_search_movie():
 		pass
 
 
-@mock.mock()
-def test_search_movie_single_mock(m):
-	title = ("avengers")
-	m.get(m.get('http://www.omdbapi.com/?i=tt3896198&apikey=27f3a92e&t={}'.format(title), json={'Title': "avengers", 'Genre':"genre", 'Plot':"plot" }))
-	x = external_movie_api.search_movie(title)
-	assert x != ({'status' : 'down'})
+def test_search_movie_single_mock():
+	with mock.Mocker() as m:
+		title = ("avengers")
+		m.get(m.get('http://www.omdbapi.com/?i=tt3896198&apikey=27f3a92e&t={}'.format(title), json={'Title': "avengers", 'Genre':"genre", 'Plot':"plot" }))
+		x = external_movie_api.search_movie(title)
+		assert x != ({'status' : 'down'})
 
 
 
 
-@mock.mock()
-def test_search__movie_mock(m):
-	title = ("avengers")
-	m.get('http://www.omdbapi.com/?i=tt3896198&apikey=27f3a92e&t={}'.format(title), json={'Title': "avengers", 'Genre':"genre", 'Plot':"plot" })
-	#x = external_movie_api.search_movie(title)
-	x = requests.get('http://www.omdbapi.com/?i=tt3896198&apikey=27f3a92e&t={}'.format(title))
-	print(x)
-	assert x != {'status': 'down'}
+
+def test_search__movie_mock():
+	with mock.Mocker() as m:	
+		title = ("avengers")
+		m.get('http://www.omdbapi.com/?i=tt3896198&apikey=27f3a92e&t={}'.format(title), json={'Title': "avengers", 'Genre':"genre", 'Plot':"plot" })
+		#x = external_movie_api.search_movie(title)
+		x = requests.get('http://www.omdbapi.com/?i=tt3896198&apikey=27f3a92e&t={}'.format(title))
+		print(x)
+		assert x != {'status': 'down'}
