@@ -34,7 +34,7 @@ def search_multiple_movies(title):
 			counter += 1
 			title = (x['Title'])
 			movie = search_movie(title)
-			sleep(0.2)
+			sleep(0.3)
 			dic.update({counter: movie})
 		return dic
 	else:
